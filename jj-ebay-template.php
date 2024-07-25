@@ -13,8 +13,6 @@ Author URI: https://mehulgohil.com/
 class Ebay_Plugin {
     public function __construct() {
         
-        // Enqueue JavaScript
-        // add_action( 'wp_enqueue_scripts', [ $this, 'register_scripts' ] );
         if( is_admin() ) {
             
             add_action( 'admin_enqueue_scripts', [ $this, 'register_assets' ] );
@@ -26,13 +24,6 @@ class Ebay_Plugin {
             add_action( 'wp_ajax_jj_copy_data', [ $this, 'handle_jj_copy_data' ] );
         }
     }
-
-    /* public function register_scripts() {
-        $ajaxurl = admin_url('admin-ajax.php');
-
-        wp_enqueue_script( 'jj-pdf-download-script', plugin_dir_url(__FILE__) . 'script.js', array(), '1.0', true);
-        wp_add_inline_script('jj-pdf-download-script', 'var ajaxurl = "' . $ajaxurl . '";', 'before');
-    } */
 
     public function register_assets() {
 		wp_enqueue_script( 'jj-ebay-template-script',  plugin_dir_url(__FILE__) . 'assets/src/js/admin/jj-ebay-admin.js', array(), '1.0', true );
